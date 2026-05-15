@@ -43,7 +43,7 @@ class _MainWrapperState extends State<MainWrapper> {
           borderRadius: BorderRadius.circular(28),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withAlpha((0.06 * 255).round()),
+              color: Colors.black.withOpacity(0.06),
               blurRadius: 20,
               offset: const Offset(0, 4),
             ),

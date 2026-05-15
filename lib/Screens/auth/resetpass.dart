@@ -5,7 +5,7 @@ class ResetPasswordPage extends StatefulWidget {
   const ResetPasswordPage({super.key});
 
   @override
-  State<ResetPasswordPage> createState() => _ResetPasswordPageState();
+ State<ResetPasswordPage> createState() => _ResetPasswordPageState();
 }
 
 class _ResetPasswordPageState extends State<ResetPasswordPage> {
@@ -31,19 +31,13 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
   }
 
   @override
-  void dispose() {
-    passwordController.dispose();
-    confirmController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     const primaryPurple = Color(0xFFFF80AB);
     const lightPurple = Color(0xFFFCE4EC);
     const bgColor = Color(0xFFFCE4EC);
     const textGrey = Color(0xFF6F6A75);
     const darkText = Color(0xFF3E3A42);
+    const fieldShadow = Color(0x14000000);
 
     return Scaffold(
       backgroundColor: bgColor,

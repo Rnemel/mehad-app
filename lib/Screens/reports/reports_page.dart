@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 import 'package:mehad/theme/app_colors.dart';
 
 class ReportsPage extends StatelessWidget {
@@ -45,13 +46,7 @@ class _ChartCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(28),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withAlpha((0.02 * 255).round()),
-            blurRadius: 15,
-            offset: const Offset(0, 6),
-          )
-        ],
+        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.02), blurRadius: 15, offset: const Offset(0, 6))],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,10 +105,7 @@ class _LineChartPainter extends CustomPainter {
        ..shader = LinearGradient(
          begin: Alignment.topCenter,
          end: Alignment.bottomCenter,
-         colors: [
-           AppColors.primaryPurple.withAlpha((0.2 * 255).round()),
-           Colors.transparent
-         ],
+         colors: [AppColors.primaryPurple.withOpacity(0.2), Colors.transparent],
        ).createShader(Rect.fromLTRB(0, 0, size.width, size.height));
 
     final path = Path();
@@ -137,6 +129,7 @@ class _LineChartPainter extends CustomPainter {
     canvas.drawPath(fillPath, fillPaint);
     canvas.drawPath(path, paint);
 
+    // Draw points
     final dotPaint = Paint()..color = Colors.white..style = PaintingStyle.fill;
     final dotOuterPaint = Paint()..color = AppColors.primaryPurple..style = PaintingStyle.stroke..strokeWidth = 2;
     for (var i = 0; i < points.length; i++) {
@@ -153,9 +146,7 @@ class _LineChartPainter extends CustomPainter {
 class _BarChartPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = AppColors.primaryPurple.withAlpha((0.15 * 255).round())
-      ..style = PaintingStyle.fill;
+    final paint = Paint()..color = AppColors.primaryPurple.withOpacity(0.15)..style = PaintingStyle.fill;
     final activePaint = Paint()..color = AppColors.primaryPurple..style = PaintingStyle.fill;
 
     final values = [0.7, 0.8, 0.6, 0.9, 0.75, 0.5, 0.85];
@@ -207,11 +198,7 @@ class _StatTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: Colors.black.withAlpha((0.02 * 255).round())),
-      ),
+      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(22), border: Border.all(color: Colors.black.withOpacity(0.02))),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -22,7 +22,7 @@ class PlaceholderScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(30),
               decoration: BoxDecoration(
-                color: AppColors.lightPurple.withAlpha((0.3 * 255).round()),
+                color: AppColors.lightPurple.withOpacity(0.3),
                 shape: BoxShape.circle,
               ),
               child: Icon(icon, size: 80, color: AppColors.primaryPurple),

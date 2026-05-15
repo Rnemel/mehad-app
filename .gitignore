@@ -44,22 +44,5 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# Android/Gradle
-**/android/.gradle/
-**/android/.cxx/
-**/android/local.properties
-**/android/key.properties
-*.jks
-*.keystore
-
-# iOS/macOS
-**/ios/Pods/
-**/ios/.symlinks/
-**/ios/Flutter/Flutter.framework
-**/ios/Flutter/Flutter.podspec
-**/ios/Flutter/Generated.xcconfig
-**/ios/Flutter/ephemeral/
-**/ios/Runner/GeneratedPluginRegistrant.*
-**/macos/Pods/
-**/macos/Flutter/ephemeral/
-**/macos/Runner/GeneratedPluginRegistrant.swift
+# Backend / secrets
+backend new/

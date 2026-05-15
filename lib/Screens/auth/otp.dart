@@ -67,7 +67,7 @@ class OtpPage extends StatelessWidget {
       width: 60,
       height: 60,
       decoration: BoxDecoration(
-        color: Colors.white.withAlpha((0.9 * 255).round()),
+        color: Colors.white.withOpacity(.9),
         borderRadius: BorderRadius.circular(15),
       ),
       child: const Center(

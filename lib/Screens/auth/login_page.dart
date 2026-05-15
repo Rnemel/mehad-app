@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:mehad/navigation/route_generator.dart';
+import 'package:provider/provider.dart';
+import 'package:mehad/providers/auth_provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -12,6 +14,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   bool _isValidEmail(String email) {
     return RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
@@ -121,6 +124,8 @@ class _LoginPageState extends State<LoginPage> {
                             shadowColor: fieldShadow,
                             obscureText: true,
                             keyboardType: TextInputType.text,
+                            controller: _passwordController,
+                            validator: (value) => (value == null || value.isEmpty) ? "Please enter your password" : null,
                           ),
 
                           const SizedBox(height: 12),
@@ -152,28 +157,51 @@ class _LoginPageState extends State<LoginPage> {
                           SizedBox(
                             width: double.infinity,
                             height: 54,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                if (_formKey.currentState!.validate()) {
-                                  Navigator.pushReplacementNamed(context, AppRoutes.dashboard);
-                                }
+                            child: Consumer<AuthProvider>(
+                              builder: (context, auth, child) {
+                                return ElevatedButton(
+                                  onPressed: auth.isLoading
+                                      ? null
+                                      : () async {
+                                          if (_formKey.currentState!.validate()) {
+                                            String? error = await auth.login(
+                                              _emailController.text,
+                                              _passwordController.text,
+                                            );
+
+                                            if (error == null) {
+                                              if (mounted) {
+                                                Navigator.pushReplacementNamed(context, AppRoutes.dashboard);
+                                              }
+                                            } else {
+                                              if (mounted) {
+                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                  SnackBar(content: Text(error)),
+                                                );
+                                              }
+                                            }
+                                          }
+                                        },
+                                  style: ElevatedButton.styleFrom(
+                                    elevation: 4,
+                                    shadowColor: const Color(0x33000000),
+                                    backgroundColor: primaryPurple,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
+                                  ),
+                                  child: auth.isLoading
+                                      ? const CircularProgressIndicator(color: Colors.white)
+                                      : const Text(
+                                          "Sign In",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                );
                               },
-                              style: ElevatedButton.styleFrom(
-                                elevation: 4,
-                                shadowColor: const Color(0x33000000),
-                                backgroundColor: primaryPurple,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                              ),
-                              child: const Text(
-                                "Sign In",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
                             ),
                           ),
 

@@ -38,7 +38,7 @@ class _DonutChartWidgetState extends State<DonutChartWidget> with SingleTickerPr
           builder: (context, child) {
             return CustomPaint(
               size: const Size(220, 220),
-              painter: _DonutChartPainter(
+              painter: DonutChartPainter(
                 segments: config.segments,
                 animationValue: _controller.value,
               ),
@@ -129,11 +129,11 @@ class _SegConfig {
   _SegConfig({required this.color, required this.pct});
 }
 
-class _DonutChartPainter extends CustomPainter {
+class DonutChartPainter extends CustomPainter {
   final List<_SegConfig> segments;
   final double animationValue;
 
-  _DonutChartPainter({required this.segments, required this.animationValue});
+  DonutChartPainter({required this.segments, required this.animationValue});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -179,5 +179,5 @@ class _DonutChartPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant _DonutChartPainter oldDelegate) => oldDelegate.animationValue != animationValue;
+  bool shouldRepaint(covariant DonutChartPainter oldDelegate) => oldDelegate.animationValue != animationValue;
 }

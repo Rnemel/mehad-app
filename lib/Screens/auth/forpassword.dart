@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:mehad/navigation/route_generator.dart';
+import 'package:mehad/Screens/auth/login_page.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   const ForgotPasswordPage({super.key});
@@ -216,8 +217,8 @@ class ForgotPasswordPage extends StatelessWidget {
             fontSize: 15,
             fontWeight: FontWeight.w400,
           ),
-          prefixIcon: Icon(
-            icon,
+          prefixIcon: const Icon(
+            Icons.mail_outline,
             color: Color(0xFFA28BB8),
             size: 20,
           ),

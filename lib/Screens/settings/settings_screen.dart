@@ -5,6 +5,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:mehad/navigation/route_generator.dart';
 import 'package:mehad/providers/health_provider.dart';
 import 'package:mehad/theme/app_colors.dart';
+import 'package:mehad/models/health_models.dart';
 
 class HealthSettingsScreen extends StatefulWidget {
   const HealthSettingsScreen({super.key});
@@ -149,7 +150,7 @@ class _CurrentDeviceCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(32),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFEC407A).withAlpha((0.4 * 255).round()),
+            color: const Color(0xFFEC407A).withOpacity(0.4),
             blurRadius: 20,
             offset: const Offset(0, 10),
           ),
@@ -160,11 +161,7 @@ class _CurrentDeviceCard extends StatelessWidget {
           Positioned(
             right: -20,
             top: -20,
-            child: Icon(
-              Icons.watch_outlined,
-              size: 140,
-              color: Colors.white.withAlpha((0.1 * 255).round()),
-            ),
+            child: Icon(Icons.watch_outlined, size: 140, color: Colors.white.withOpacity(0.1)),
           ),
           Row(
             children: [
@@ -234,9 +231,9 @@ class _Tag extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       decoration: BoxDecoration(
-        color: Colors.white.withAlpha((0.15 * 255).round()),
+        color: Colors.white.withOpacity(0.15),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white.withAlpha((0.1 * 255).round())),
+        border: Border.all(color: Colors.white.withOpacity(0.1)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -335,7 +332,7 @@ class _PremiumToggleTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withAlpha((0.02 * 255).round()),
+            color: Colors.black.withOpacity(0.02),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -346,7 +343,7 @@ class _PremiumToggleTile extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: iconColor.withAlpha((0.1 * 255).round()),
+              color: iconColor.withOpacity(0.1),
               shape: BoxShape.circle,
             ),
             child: Icon(icon, size: 20, color: iconColor),
@@ -365,8 +362,8 @@ class _PremiumToggleTile extends StatelessWidget {
           Switch(
             value: value,
             onChanged: onChanged,
-            activeThumbColor: AppColors.primaryPurple,
-            activeTrackColor: AppColors.primaryPurple.withAlpha((0.3 * 255).round()),
+            activeColor: AppColors.primaryPurple,
+            activeTrackColor: AppColors.primaryPurple.withOpacity(0.3),
           ),
         ],
       ),
@@ -418,8 +415,8 @@ class _AvailableDevicesSection extends StatelessWidget {
                  Stack(
                    alignment: Alignment.center,
                    children: [
-                      Container(width: 60, height: 60, decoration: BoxDecoration(color: AppColors.primaryPurple.withAlpha((0.1 * 255).round()), shape: BoxShape.circle)).animate(onPlay: (c) => c.repeat()).scale(duration: 2.seconds, end: const Offset(3, 3)).fadeOut(),
-                      Container(width: 60, height: 60, decoration: BoxDecoration(color: AppColors.primaryPurple.withAlpha((0.15 * 255).round()), shape: BoxShape.circle)).animate(onPlay: (c) => c.repeat()).scale(delay: 500.ms, duration: 2.seconds, end: const Offset(3, 3)).fadeOut(),
+                      Container(width: 60, height: 60, decoration: BoxDecoration(color: AppColors.primaryPurple.withOpacity(0.1), shape: BoxShape.circle)).animate(onPlay: (c) => c.repeat()).scale(duration: 2.seconds, end: const Offset(3, 3)).fadeOut(),
+                      Container(width: 60, height: 60, decoration: BoxDecoration(color: AppColors.primaryPurple.withOpacity(0.15), shape: BoxShape.circle)).animate(onPlay: (c) => c.repeat()).scale(delay: 500.ms, duration: 2.seconds, end: const Offset(3, 3)).fadeOut(),
                       const Icon(Icons.bluetooth_searching, color: AppColors.primaryPurple, size: 30),
                    ],
                  ),
@@ -455,7 +452,7 @@ class _PremiumDeviceTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withAlpha((0.02 * 255).round()),
+            color: Colors.black.withOpacity(0.02),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -525,7 +522,7 @@ class _DataSyncSection extends StatelessWidget {
             borderRadius: BorderRadius.circular(32),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withAlpha((0.03 * 255).round()),
+                color: Colors.black.withOpacity(0.03),
                 blurRadius: 15,
                 offset: const Offset(0, 6),
               ),

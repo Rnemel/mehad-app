@@ -118,7 +118,7 @@ class _WelcomeHeader extends StatelessWidget {
       children: [
         Text(
           "How are you feeling today?",
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppColors.navy.withAlpha((0.9 * 255).round())),
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppColors.navy.withOpacity(0.9)),
         ),
         const SizedBox(height: 6),
         const Text(
@@ -144,7 +144,7 @@ class _SeizureRiskCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(32),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primaryPurple.withAlpha((0.06 * 255).round()),
+            color: AppColors.primaryPurple.withOpacity(0.06),
             blurRadius: 24,
             offset: const Offset(0, 12),
           ),
@@ -246,10 +246,10 @@ class _SmartwatchConnectivityCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(28),
-          border: Border.all(color: AppColors.primaryPurple.withAlpha((0.05 * 255).round())),
+          border: Border.all(color: AppColors.primaryPurple.withOpacity(0.05)),
           boxShadow: [
             BoxShadow(
-                color: Colors.black.withAlpha((0.02 * 255).round()),
+                color: Colors.black.withOpacity(0.02),
                 blurRadius: 15,
                 offset: const Offset(0, 8),
             ),
@@ -259,7 +259,7 @@ class _SmartwatchConnectivityCard extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(color: AppColors.lightPurple.withAlpha((0.4 * 255).round()), borderRadius: BorderRadius.circular(18)),
+              decoration: BoxDecoration(color: AppColors.lightPurple.withOpacity(0.4), borderRadius: BorderRadius.circular(18)),
               child: const Icon(Icons.watch_outlined, color: AppColors.primaryPurple, size: 24),
             ).animate(onPlay: (controller) => controller.repeat(reverse: true)).shimmer(duration: 2.seconds, color: Colors.white38),
             const SizedBox(width: 16),
@@ -345,9 +345,9 @@ class _ActionTile extends StatelessWidget {
         color: isPrimary ? color : Colors.white,
         borderRadius: BorderRadius.circular(28),
         boxShadow: isPrimary 
-            ? [BoxShadow(color: color.withAlpha((0.3 * 255).round()), blurRadius: 16, offset: const Offset(0, 8))]
-            : [BoxShadow(color: Colors.black.withAlpha((0.03 * 255).round()), blurRadius: 10, offset: const Offset(0, 4))],
-        border: isPrimary ? null : Border.all(color: Colors.black.withAlpha((0.04 * 255).round())),
+            ? [BoxShadow(color: color.withOpacity(0.3), blurRadius: 16, offset: const Offset(0, 8))]
+            : [BoxShadow(color: Colors.black.withOpacity(0.03), blurRadius: 10, offset: const Offset(0, 4))],
+        border: isPrimary ? null : Border.all(color: Colors.black.withOpacity(0.04)),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -441,8 +441,8 @@ class _SummaryCard extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.white, 
           borderRadius: BorderRadius.circular(28), 
-          border: Border.all(color: Colors.black.withAlpha((0.04 * 255).round())),
-          boxShadow: [BoxShadow(color: Colors.black.withAlpha((0.01 * 255).round()), blurRadius: 10)],
+          border: Border.all(color: Colors.black.withOpacity(0.04)),
+          boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.01), blurRadius: 10)],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

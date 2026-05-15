@@ -104,7 +104,7 @@ class _AnalyzingPageState extends State<AnalyzingPage> {
       width: 10,
       height: 10,
       decoration: BoxDecoration(
-        color: active ? AppColors.navy : AppColors.subGreyText.withAlpha((0.5 * 255).round()),
+        color: active ? AppColors.navy : AppColors.subGreyText.withOpacity(0.5),
         shape: BoxShape.circle,
       ),
       transform: active ? Matrix4.diagonal3Values(1.2, 1.2, 1.0) : Matrix4.identity(),

@@ -28,7 +28,7 @@ class HistoryPage extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(22),
-              border: Border.all(color: Colors.black.withAlpha((0.03 * 255).round())),
+              border: Border.all(color: Colors.black.withOpacity(0.03)),
             ),
             child: Row(
               children: [
@@ -46,7 +46,7 @@ class HistoryPage extends StatelessWidget {
                   children: [
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                      decoration: BoxDecoration(color: colors[index].withAlpha((0.1 * 255).round()), borderRadius: BorderRadius.circular(10)),
+                      decoration: BoxDecoration(color: colors[index].withOpacity(0.1), borderRadius: BorderRadius.circular(10)),
                       child: Text(results[index], style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: colors[index])),
                     ),
                     const SizedBox(height: 6),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mehad/navigation/route_generator.dart';
 
 class SmartwatchPage extends StatefulWidget {
   const SmartwatchPage({super.key});
@@ -20,6 +21,8 @@ class _SmartwatchPageState extends State<SmartwatchPage> {
     const Color lightPurple = Color(0xFFD8B8F7);
     const Color scaffoldBg = Color(0xFFF6F4F8);
     const Color titleColor = Color(0xFF4A4A4A);
+    const Color subTitleColor = Color(0xFF9A9A9A);
+    const Color green = Color(0xFFA8DEC0);
     const Color switchPurple = Color(0xFF7F62A9);
 
     return Scaffold(
@@ -79,7 +82,7 @@ class _SmartwatchPageState extends State<SmartwatchPage> {
                                   vertical: 5,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: Colors.white.withAlpha((0.20 * 255).round()),
+                                  color: Colors.white.withOpacity(.20),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: const Row(
@@ -107,7 +110,7 @@ class _SmartwatchPageState extends State<SmartwatchPage> {
                                   vertical: 5,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: Colors.white.withAlpha((0.20 * 255).round()),
+                                  color: Colors.white.withOpacity(.20),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: const Row(
@@ -146,7 +149,7 @@ class _SmartwatchPageState extends State<SmartwatchPage> {
                       width: 58,
                       height: 58,
                       decoration: BoxDecoration(
-                        color: Colors.white.withAlpha((0.15 * 255).round()),
+                        color: Colors.white.withOpacity(.15),
                         borderRadius: BorderRadius.circular(14),
                         border: Border.all(color: Colors.white24),
                       ),
@@ -325,7 +328,7 @@ class _SmartwatchPageState extends State<SmartwatchPage> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Colors.white.withAlpha((0.9 * 255).round()),
+                  color: Colors.white.withOpacity(.9),
                   borderRadius: BorderRadius.circular(18),
                 ),
                 child: Column(
@@ -461,7 +464,7 @@ class _SettingTile extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
-        color: Colors.white.withAlpha((0.92 * 255).round()),
+        color: Colors.white.withOpacity(.92),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
@@ -491,7 +494,7 @@ class _SettingTile extends StatelessWidget {
             child: Switch(
               value: value,
               onChanged: onChanged,
-              activeThumbColor: Colors.white,
+              activeColor: Colors.white,
               activeTrackColor: activeColor,
               inactiveThumbColor: Colors.white,
               inactiveTrackColor: const Color(0xFFE2E2E7),
@@ -519,7 +522,7 @@ class _DeviceTile extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       decoration: BoxDecoration(
-        color: Colors.white.withAlpha((0.92 * 255).round()),
+        color: Colors.white.withOpacity(.92),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
@@ -610,6 +613,51 @@ class _SyncRow extends StatelessWidget {
             fontSize: 13,
             color: Color(0xFF4A4A4A),
             fontWeight: FontWeight.w500,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _BottomItem extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final bool isSelected;
+
+  const _BottomItem({
+    required this.icon,
+    required this.label,
+    this.isSelected = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    const Color primaryPurple = Color(0xFF8E6CCB);
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          width: isSelected ? 36 : 30,
+          height: isSelected ? 36 : 30,
+          decoration: BoxDecoration(
+            color: isSelected ? const Color(0xFFEFE5FB) : Colors.transparent,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Icon(
+            icon,
+            size: 18,
+            color: isSelected ? primaryPurple : const Color(0xFFA0A0A8),
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 10,
+            color: isSelected ? primaryPurple : const Color(0xFFA0A0A8),
+            fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
           ),
         ),
       ],

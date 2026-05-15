@@ -13,7 +13,7 @@ class MapPinWidget extends StatelessWidget {
       width: 120,
       height: 120,
       decoration: BoxDecoration(
-        color: color.withAlpha((0.1 * 255).round()),
+        color: color.withOpacity(0.1),
         shape: BoxShape.circle,
       ),
       child: Center(

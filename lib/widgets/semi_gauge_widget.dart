@@ -106,9 +106,9 @@ class SemiGaugePainter extends CustomPainter {
     );
 
     // Emoji faces (simulated)
-    _drawFace(canvas, center, radius, -115, Colors.brown.withAlpha((0.5 * 255).round())); // Sad
-    _drawFace(canvas, center, radius, 0, Colors.brown.withAlpha((0.5 * 255).round())); // Neutral
-    _drawFace(canvas, center, radius, 115, Colors.green.withAlpha((0.5 * 255).round())); // Happy
+    _drawFace(canvas, center, radius, -115, Colors.brown.withOpacity(0.5)); // Sad
+    _drawFace(canvas, center, radius, 0, Colors.brown.withOpacity(0.5)); // Neutral
+    _drawFace(canvas, center, radius, 115, Colors.green.withOpacity(0.5)); // Happy
 
     // Needle
     final needlePaint = Paint()

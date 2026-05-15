@@ -1,11 +1,14 @@
 import 'dart:async';
 import 'dart:math' as math;
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mehad/models/health_models.dart';
+import 'package:mehad/theme/app_colors.dart';
+import 'package:mehad/providers/health_service.dart';
 
 class HealthProvider with ChangeNotifier {
+  final HealthService _healthService = HealthService();
+  
   // Watch State
   bool _isWatchConnected = true;
   int _watchBattery = 85;
@@ -14,9 +17,9 @@ class HealthProvider with ChangeNotifier {
   
   // Vitals
   int _currentHeartRate = 72;
-  final double _sleepQuality = 8.2;
-  final double _glucoseLevel = 95.0;
-  final String _riskLevel = 'Low Risk';
+  double _sleepQuality = 8.2;
+  double _glucoseLevel = 95.0;
+  String _riskLevel = "Low Risk";
   
   // Simulation Timers
   Timer? _vitalsTimer;
@@ -95,8 +98,22 @@ class HealthProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> sendCurrentVitalsToBackend(int patientId) async {
+    // Generate some mock signal data for the AI model (15360 points as required by backend)
+    List<double> mockSignal = List.generate(15360, (index) => math.Random().nextDouble());
+    
+    bool success = await _healthService.sendHealthData(
+      patientId: patientId,
+      signalData: mockSignal,
+    );
+    
+    if (success) {
+      print("Vitals sent and processed by AI backend");
+    }
+  }
+
   void triggerEmergency() {
-    debugPrint('EMERGENCY TRIGGERED');
+    print("EMERGENCY TRIGGERED");
   }
 
   @override
